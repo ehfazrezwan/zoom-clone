@@ -73,9 +73,12 @@ Web-based clone of the Zoom video communications application, with features such
 ### Built With
 
 - [NodeJS](https://nodejs.org/)
+- [Express](https://expressjs.com/)
 - [JavaScript ES6+](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 - [CSS3](https://www.w3.org/Style/CSS/)
 - [MongoDB](https://www.mongodb.com/)
+- [Socket.io](https://socket.io/)
+- [PeerJS](https://peerjs.com/)
 
 <!-- GETTING STARTED -->
 
