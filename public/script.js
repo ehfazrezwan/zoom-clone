@@ -34,6 +34,7 @@ navigator.mediaDevices
       newMessage.innerHTML = `<li class="message"><b>user</b><br/>${message}</li>`;
 
       messageHolder.append(newMessage);
+      scrollToBottom();
     });
   });
 
@@ -66,3 +67,8 @@ msg.addEventListener("keydown", (e) => {
     msg.value = "";
   }
 });
+
+const scrollToBottom = () => {
+  const d = document.getElementsByClassName("main__chat_window")[0];
+  d.scrollTop = d.scrollHeight;
+};
