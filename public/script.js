@@ -2,6 +2,7 @@ const socket = io("/");
 
 const videoGrid = document.getElementById("video-grid");
 const myVideo = document.createElement("video");
+const messageHolder = document.getElementsByClassName("messages")[0];
 
 myVideo.muted = true;
 
@@ -27,6 +28,13 @@ navigator.mediaDevices
         addVideoStream(video, userVideoStream);
       });
     });
+
+    socket.on("create-message", (message) => {
+      const newMessage = document.createElement("li");
+      newMessage.innerHTML = `<li class="message"><b>user</b><br/>${message}</li>`;
+
+      messageHolder.append(newMessage);
+    });
   });
 
 peer.on("open", (id) => {
@@ -49,3 +57,12 @@ const addVideoStream = (video, stream) => {
 
   videoGrid.append(video);
 };
+
+let msg = document.getElementById("chat_message");
+
+msg.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && msg.value.length !== 0) {
+    socket.emit("message", msg.value);
+    msg.value = "";
+  }
+});
